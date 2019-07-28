@@ -1,34 +1,34 @@
 package com.retail.model.bill;
 
-import com.retail.model.com.reatil.model.rules.RuleType;
 import com.retail.model.customer.User;
+import com.retail.rules.RuleType;
 
-import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
-import java.util.Map;
 
 public class Invoice {
     User customer;
     List<Product> productList;
     Hashtable<RuleType, Integer> rulesExecuted;
     double totalAmount;
+    boolean isTotalAmountSet;
 
-    public Invoice(){
+    public Invoice() {
 
     }
 
-    public Invoice(User customer,List<Product> productList,double totalAmount) {
+    public Invoice(User customer, List<Product> productList, double totalAmount, boolean isTotalAmountSet) {
         this.customer = customer;
         this.productList = productList;
         this.totalAmount = totalAmount;
+        this.isTotalAmountSet = isTotalAmountSet;
     }
 
     public void setProductList(List<Product> productList) {
         this.productList = productList;
     }
 
-    public List<Product> getProductList(){
+    public List<Product> getProductList() {
         return productList;
     }
 
@@ -36,12 +36,12 @@ public class Invoice {
         return customer;
     }
 
-    public void setRulesExecuted(Hashtable<RuleType ,Integer> rulesExecuted) {
-        this.rulesExecuted = rulesExecuted;
+    public Hashtable<RuleType, Integer> getRulesExecuted() {
+        return this.rulesExecuted;
     }
 
-    public Hashtable<RuleType,Integer> getRulesExecuted() {
-        return this.rulesExecuted;
+    public void setRulesExecuted(Hashtable<RuleType, Integer> rulesExecuted) {
+        this.rulesExecuted = rulesExecuted;
     }
 
     public void setTotalAmount(double totalAmount) {
@@ -50,5 +50,13 @@ public class Invoice {
 
     public double getTotalAmount() {
         return totalAmount;
+    }
+
+    public boolean isTotalAmountSet() {
+        return this.isTotalAmountSet;
+    }
+
+    public void setTotalAmountSet(boolean isTotalAmountSet) {
+        this.isTotalAmountSet = isTotalAmountSet;
     }
 }

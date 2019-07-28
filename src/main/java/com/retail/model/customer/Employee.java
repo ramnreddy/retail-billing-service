@@ -1,6 +1,15 @@
 package com.retail.model.customer;
 
-public class Employee extends User {
+import java.time.LocalDate;
+
+public class Employee extends Customer {
+    public Employee() {
+        super();
+    }
+
+    public Employee(LocalDate customerRegistrationDate) {
+        super(customerRegistrationDate);
+    }
 }
 
 

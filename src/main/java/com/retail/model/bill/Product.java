@@ -7,7 +7,7 @@ public class Product {
     double productPrice;
     ProductType productType;
 
-    public void setProductId(String prodId){
+    public void setProductId(String prodId) {
         this.productId = prodId;
     }
 
@@ -15,15 +15,15 @@ public class Product {
         return productId;
     }
 
-    public void setProductName(String prodName){
-        this.productName = prodName;
-    }
-
-    public String getProductName(){
+    public String getProductName() {
         return productName;
     }
 
-    public void setProductPrice(double prodPrice){
+    public void setProductName(String prodName) {
+        this.productName = prodName;
+    }
+
+    public void setProductPrice(double prodPrice) {
         this.productPrice = prodPrice;
     }
 

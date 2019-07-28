@@ -1,43 +1,59 @@
 package com.retail.service;
 
 import com.retail.model.bill.Invoice;
-import com.retail.model.com.reatil.model.rules.AffiliateRule;
-import com.retail.model.com.reatil.model.rules.EmployeeRule;
-import com.retail.model.com.reatil.model.rules.Rule;
-import com.retail.model.com.reatil.model.rules.RuleType;
 import com.retail.model.customer.Affiliate;
 import com.retail.model.customer.Employee;
 import com.retail.model.customer.User;
+import com.retail.rules.AffiliateRule;
+import com.retail.rules.EmployeeRule;
+import com.retail.rules.Rule;
+import com.retail.rules.RuleType;
 import com.retail.service.util.RulesHelper;
 
 import java.util.List;
+import java.util.logging.Logger;
+
+/**
+ * BillCalculationService
+ */
 
 public class BillCalculationService {
+    private static final Logger log = Logger.getLogger(BillCalculationService.class.getName());
 
     public Invoice calculateBill(Invoice invoice) {
-
-        double amountPayable;
-
         Rule rule = getRule(invoice.getCustomer());
-
-        if (rule != null){
+        if (rule != null) {
             invoice = rule.calculateDiscountAmount(invoice);
+            log.info("Total amount after applying first set of rule : " + invoice.getTotalAmount());
         }
-
-        invoice = applyAddionalRules(RulesHelper.getAdditionalRules(),invoice);
+        invoice = applyAddionalRules(RulesHelper.getAdditionalRules(), invoice);
+        log.info("Total amount after applying all discounts : " + invoice.getTotalAmount());
         return invoice;
     }
+
+    /**
+     * Return the rule based on type of customer
+     *
+     * @param user : type of teh customer (Employye or Affiliate or normal customer
+     * @return type of rule
+     */
 
     private Rule getRule(User user) {
         if (user instanceof Employee) {
             return new EmployeeRule(RuleType.PERCENTAGE_RULE);
-        }
-        else if (user instanceof Affiliate) {
-            return new AffiliateRule();
+        } else if (user instanceof Affiliate) {
+            return new AffiliateRule(RuleType.PERCENTAGE_RULE);
         }
         return null;
     }
 
+    /**
+     * Applies additional common discount based on Loyality & Overal expenses
+     *
+     * @param additionalRules
+     * @param invoice
+     * @return
+     */
     private Invoice applyAddionalRules(List<Rule> additionalRules, Invoice invoice) {
         additionalRules.forEach(rule -> rule.calculateDiscountAmount(invoice));
         return invoice;

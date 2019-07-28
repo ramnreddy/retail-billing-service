@@ -1,15 +1,14 @@
 package com.retail.model.customer;
 
-public class Affiliate extends User {
+import java.time.LocalDate;
 
-    String userId;
-    String userName;
-    boolean isActive;
+public class Affiliate extends Customer {
 
-    public Affiliate() { super();}
-
-    public Affiliate(String userId,String userName,boolean isActive) {
-        super(userId,userName,isActive);
+    public Affiliate() {
+        super();
     }
 
+    public Affiliate(LocalDate customerRegistrationDate) {
+        super(customerRegistrationDate);
+    }
 }

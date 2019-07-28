@@ -1,5 +1,5 @@
 package com.retail.model.bill;
 
 public enum ProductType {
-    GROCERIES,NON_GROCERIES
+    GROCERIES, NON_GROCERIES
 }

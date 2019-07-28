@@ -8,6 +8,10 @@ public class Customer extends User {
     LocalDate customerRegistrationDate;
     boolean isLoyal;
 
+    public Customer() {
+        super();
+    }
+
     public Customer(LocalDate customerRegistrationDate){
         super();
         this.isLoyal = isLoyalCustomer(customerRegistrationDate);
@@ -17,11 +21,11 @@ public class Customer extends User {
         return isLoyal;
     }
 
-    private boolean isLoyalCustomer(LocalDate customerRegistrationDate) {
-        Period period = Period.between(LocalDate.now(), customerRegistrationDate);
+    public boolean isLoyalCustomer(LocalDate customerRegistrationDate) {
+        Period period = Period.between(customerRegistrationDate, LocalDate.now());
         int diff = period.getYears();
 
-        return ( period.getYears() > 2 ?  true :  false) ;
+        return (period.getYears() >= 2);
     }
 
 
