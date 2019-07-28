@@ -1,0 +1,29 @@
+### gradle ###
+.gradle
+.gradle-cache
+/build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# backup files
+*.bak
+
+### TEMP ###
+.classpath
+.project
+.settings
+*.class
+/target
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+/out/
+/bin/
+
+### Package Files ###
+*.jar
+*.war
+*.ear
+
