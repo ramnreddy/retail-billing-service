@@ -1,0 +1,6 @@
+retail.billing:
+  employee.discount: ${EMP_DISCOUNT:0.3}
+  affiliate.discount: ${AFF_DISCOUNT:0.1}
+  loyality.discount: ${EMP_DISCOUNT:0.05}
+  totalbill.discount: ${EMP_DISCOUNT:5}
+

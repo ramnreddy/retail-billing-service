@@ -64,11 +64,21 @@ public class BillingTestDataBuilder {
         List<Product> productList = new ArrayList<Product>();
         productList.add(getGroceryProduct());
         productList.add(getNonGroceryProduct());
-        Customer ram = new Affiliate(LocalDate.of(2016, 8, 23));
+        Customer ram = new Affiliate(LocalDate.of(2014, 8, 23));
         Invoice affiliateInvoiceLoyalty = new Invoice();
         affiliateInvoiceLoyalty = new Invoice(ram, productList, 0, false);
         return affiliateInvoiceLoyalty;
     }
+
+    public static Invoice getAffiliateDiscountTestDataNoLoyalty() {
+        List<Product> productList = new ArrayList<Product>();
+        productList.add(getGroceryProduct());
+        productList.add(getNonGroceryProduct());
+        Customer ram = new Affiliate(LocalDate.of(2018, 8, 23));
+        Invoice affiliateInvoiceNoLoyalty = new Invoice(ram, productList, 0, false);
+        return affiliateInvoiceNoLoyalty;
+    }
+
 
     public static Invoice getCustomerDiscountTestDataNoLoyalty() {
         List<Product> productList = new ArrayList<Product>();
@@ -90,8 +100,5 @@ public class BillingTestDataBuilder {
         return customerInvoiceWithLoyalty;
     }
 
-    public static Affiliate getAffiliateCustomer() {
-        Affiliate affliate1 = new Affiliate();
-		return affliate1;
-	}
+
 }
