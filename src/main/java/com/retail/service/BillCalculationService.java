@@ -21,13 +21,18 @@ public class BillCalculationService {
     private static final Logger log = Logger.getLogger(BillCalculationService.class.getName());
 
     public Invoice calculateBill(Invoice invoice) {
-        Rule rule = getRule(invoice.getCustomer());
-        if (rule != null) {
-            invoice = rule.calculateDiscountAmount(invoice);
-            log.info("Total amount after applying first set of rule : " + invoice.getTotalAmount());
+        try {
+            Rule rule = getRule(invoice.getCustomer());
+            if (rule != null) {
+                invoice = rule.calculateDiscountAmount(invoice);
+                log.info("Total amount after applying first set of rule : " + invoice.getTotalAmount());
+            }
+            invoice = applyAddionalRules(RulesHelper.getAdditionalRules(), invoice);
+            log.info("Total amount after applying all discounts : " + invoice.getTotalAmount());
         }
-        invoice = applyAddionalRules(RulesHelper.getAdditionalRules(), invoice);
-        log.info("Total amount after applying all discounts : " + invoice.getTotalAmount());
+        catch (Exception ex){
+            log.info("Error calulating bill {} :"+ ex.getMessage());
+        }
         return invoice;
     }
 
@@ -38,7 +43,7 @@ public class BillCalculationService {
      * @return type of rule
      */
 
-    private Rule getRule(User user) {
+    private Rule getRule(User user) throws Exception {
         if (user instanceof Employee) {
             return new EmployeeRule(RuleType.PERCENTAGE_RULE);
         } else if (user instanceof Affiliate) {

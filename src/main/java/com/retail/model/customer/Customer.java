@@ -6,7 +6,6 @@ import java.time.Period;
 public class Customer extends User {
 
     LocalDate customerRegistrationDate;
-    boolean isLoyal;
 
     public Customer() {
         super();
