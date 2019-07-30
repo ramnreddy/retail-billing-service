@@ -11,7 +11,8 @@ On a retail website, the following discounts apply:
 Write a program in a programming language of your choice with test cases such that given a bill, it finds the net payable amount
 
 ------------------------------------
-
+### UML 
+- Use case diagram & UML class diagram are located at project root folder
 ### Required Tech Stack to run the application
 - Java 1.8
 - Gradle 4.8
@@ -30,4 +31,3 @@ OR
     * **test summary**  at /retail-billing-service/build/reports/tests/test/index.html
     * **test coverage** at /retail-billing-service/build/reports/jacoco/test/html/index.html
 
-### UML ( To be uploaded )
