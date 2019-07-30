@@ -17,7 +17,7 @@ public class Customer extends User {
     }
 
     public boolean isLoyal() {
-        return isLoyal;
+        return this.isLoyal;
     }
 
     public boolean isLoyalCustomer(LocalDate customerRegistrationDate) {

@@ -4,16 +4,16 @@ public abstract class User {
 
     String userId;
     String userName;
-    boolean isActive;
     boolean isLoyal;
 
     public User() {
     }
 
-    public User(String userId, String userName, boolean isActive) {
+    public User(String userId, String userName, boolean isLoyal) {
         this.userId = userId;
         this.userName = userName;
-        this.isActive = isActive;
+        this.isLoyal = isLoyal;
+
     }
 
     public String getUserId(String userId) {
