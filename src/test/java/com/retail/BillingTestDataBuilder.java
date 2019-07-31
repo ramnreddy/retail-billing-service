@@ -24,7 +24,7 @@ public class BillingTestDataBuilder {
 	}
 	private static Product getNonGroceryProduct() {
 		Product product = new Product();
-		product.setProductName("CHOCLOTE KITKAT");
+		product.setProductName("CHOCOLATE KITKAT");
 		product.setProductPrice(110);
 		product.setProductType(ProductType.NON_GROCERIES);
 		return product;
@@ -38,6 +38,8 @@ public class BillingTestDataBuilder {
 
 	    return simpleInvoice;
     }
+
+
     public static Invoice getEployeeDiscountTestData() {
         List<Product> productList = new ArrayList<Product>();
         productList.add(getGroceryProduct());
@@ -78,7 +80,6 @@ public class BillingTestDataBuilder {
         Invoice affiliateInvoiceNoLoyalty = new Invoice(ram, productList, 0, false);
         return affiliateInvoiceNoLoyalty;
     }
-
 
     public static Invoice getCustomerDiscountTestDataNoLoyalty() {
         List<Product> productList = new ArrayList<Product>();
